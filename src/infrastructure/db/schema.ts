@@ -1,4 +1,4 @@
-import { text, pgTable, serial, integer } from "drizzle-orm/pg-core";
+import { text, pgTable, serial, integer, pgEnum } from "drizzle-orm/pg-core";
 
 export const players = pgTable("players", {
   id: serial("id").primaryKey(),
@@ -19,6 +19,15 @@ export const characters = pgTable("character", {
 export const classes = pgTable("class", {
   id: serial("id").primaryKey(),
   name: text("name"),
-  power: integer("power"),
-  hp: integer("hp"),
+  power: integer("power").notNull(),
+  hp: integer("hp").notNull(),
 });
+
+export const monsters = pgTable("monsters", {
+  id: serial("id").primaryKey(),       
+  name: text("name").notNull(),         
+  power: integer("power").notNull(),    
+  hp: integer("hp").notNull(),          
+});
+
+
