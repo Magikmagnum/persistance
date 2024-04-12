@@ -3,7 +3,10 @@ import express, { Request, Response } from "express";
 	
 import { db } from "./infrastructure/db";
 import { players } from "./infrastructure/db/schema";
-import { playersRouter } from "./routes/players/index"
+
+import { playersRouter } from "./routes/players/index";
+import { charactersRouter } from "./routes/characters/index";
+import { classesRouter } from "./routes/classes/index";
 
 const app = express();
 const port = process.env.PORT || 3000;
@@ -11,6 +14,8 @@ const port = process.env.PORT || 3000;
 // Adds the express JSON parser as a Middleware to parse each request.
 app.use(express.json());
 app.use("/players", playersRouter);
+app.use("/characters", charactersRouter);
+app.use("/classes", classesRouter);
 
 
 // Create route "/" and send plain text.
